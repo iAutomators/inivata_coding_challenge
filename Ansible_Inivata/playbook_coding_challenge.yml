@@ -1,0 +1,77 @@
+---
+# Inivata interview Coding challenge "An Ansible Playbook"
+# Created by candidate: Mayank Sekhar {mayankshekharsingh@gmail.com}
+
+# To be able to pass credentials of Public/Private cloud offerings in Ansible, Suggested way is to use Ansible Vault, Let's say for this exercise we are using Vault, and we have
+# stored our AWS Access Key and Secret Access in Vault, Ansible Vault encypts all data stored in it
+# to store our Aws Creds in Valult, we have to use the command "ansible-vault create aws-inivata-secret.yml"
+
+# As per Coding Challenge i have been given the Name Tag of the Ec2 instance
+# I need to First get the Ec2 Metadata which canbe used by Ansible to perform the tasks given in Coding Challenge
+# Details of 'my_instance_dev' is fetched by aws_ec2.yml file, as a dynamic inventory collected from AWS
+# This Playbook starts from Creating User and group in the AWS EC2 with name tag 'my_instance_dev'
+
+- hosts: all
+  name: Playbook for Inivata Interview Coding Challenge An Ansible Playbook
+  gather_facts: no
+  tasks:
+  - name: First Task Add Group 'webapps' with a specific gid to dynamic inventory VM's
+    group: 
+      name: webapps
+      gid: 570
+      state: present
+  - name: Second Task Add the user 'my_app_user' with a specific uid and a primary group of 'webapps'
+    user: 
+      name: my_app_user
+      uid: 1503
+      state: present
+      group: webapps
+      
+# Cloning the Git repo and safely passing the Public and Private key, so that cloning can happen successfully and Private key stays Secure
+# I assusme Public key is added to the Github.com repo
+      
+# to avoid having any private keys on the remote server, for Security reasons, i would like to pass my private key to Ec2 via ansible SSH connection
+# Add a SSh Configuration to ~/.ssh/config
+# ansible.cfg file with ssh-key loaded to ssh-agent and a ssh_args have been added, to make the private key be securely loaded and used for cloning the Git repo
+
+  - name: Third Task Add the SSH key by using shell command
+    shell: ssh-add ~/.ssh/id_rsa.github
+      
+  - name: Fourth Task Cloning a github repository to a specific Directory 
+     git:
+       repo: git@bitbucket.org:my-org/my_app.git
+       key_file: ~/.ssh/id_rsa.github
+       dest: /home/my_app_user/files
+       clone: yes
+       update: yes 
+              
+# Packages installation for my_app_user
+
+  - name: Fifth task Install a list of packages 'python3-devel' and 'nginx'
+    yum: 
+     name: 
+       - nginx
+       - python3-devel
+     state: latest 
+
+# Copying the my_app application code from git cloned directory to Application work directory
+
+  - name: Sixth Task Copying Code from /ansible/inivata/files to /opt/my_app
+    copy:
+     src: /home/my_app_user/files/my_app
+     dest: /opt/my_app
+     
+# Installing my_app as my_app_user
+
+  - name: Seventh Task install my_app
+    become: yes
+    become_user: my_app_user
+    command: make install my_app
+    
+# Restarting Nginx 
+
+  - name: Eight Task Restarting nginx
+    service: 
+      name: nginx 
+      state: restarted  
+      

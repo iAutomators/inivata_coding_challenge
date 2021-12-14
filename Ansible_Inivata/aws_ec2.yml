@@ -1,0 +1,16 @@
+## Inivata interview Coding challenge "An Ansible Playbook"
+## Created by candidate: Mayank Sekhar {mayankshekharsingh@gmail.com}
+
+# This is for Dynamic Inventory, as per coding challenge i have been given the Name tag of the Ec2, i am creating this Dynamic inventory to fetch the Metadata of "my_instance_dev"
+# so that i can pass this Dynamic Inventory and all the tasks of my Playbook gets Executed
+
+# Pre - Req install to Get inventory hosts from Amazon Web Services EC2 "ansible-galaxy collection install amazon.aws"
+# make sure "pip" is installed, Use pip to install Boto3 and botocore
+# and Appropriate IAM Role given to it, that has to be done either through Console or AWS CLI
+
+plugin: aws_ec2
+regions:
+  - "Enter Region Here"
+hostnames:
+  - tag:
+     Name: my_instance_dev
