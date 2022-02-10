@@ -1,4 +1,4 @@
-## Inivata interview Coding challenge "Terraform Module"
+## Coding challenge "Terraform Module"
 ## Created by candidate: Mayank Sekhar {mayankshekharsingh@gmail.com}
 
 # Backend infrastructure is where you can save your TF state remotely, As per Coding challenge ask we are saving our TF state in S3 bucket named my-tf-state
