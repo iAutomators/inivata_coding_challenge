@@ -1,4 +1,4 @@
-## Inivata interview Coding challenge "Terraform Module"
+## Coding challenge "Terraform Module"
 ## Created by candidate: Mayank Sekhar {mayankshekharsingh@gmail.com}
 
 # This file has all our main infrastructure which will be deployed in AWS and the terraform code of how a specific AWS service is deployed
