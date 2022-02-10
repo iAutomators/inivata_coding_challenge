@@ -1,6 +1,6 @@
 ---
-# Inivata interview Coding challenge "An Ansible Playbook"
-# Created by candidate: Mayank Sekhar {mayankshekharsingh@gmail.com}
+##Coding challenge "An Ansible Playbook"
+
 
 # To be able to pass credentials of Public/Private cloud offerings in Ansible, Suggested way is to use Ansible Vault, Let's say for this exercise we are using Vault, and we have
 # stored our AWS Access Key and Secret Access in Vault, Ansible Vault encypts all data stored in it
