@@ -1,4 +1,4 @@
-## Inivata interview Coding challenge "Terraform Module"
+##Coding challenge "Terraform Module"
 ## Created by candidate: Mayank Sekhar {mayankshekharsingh@gmail.com}
 
 # This file is used for passing the Variables to support main and backend file
