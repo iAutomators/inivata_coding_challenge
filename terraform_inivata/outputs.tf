@@ -1,4 +1,4 @@
-## Inivata interview Coding challenge "Terraform Module"
+## Coding challenge "Terraform Module"
 ## Created by candidate: Mayank Sekhar {mayankshekharsingh@gmail.com}
 
 # Outputs file just shows a POC that we can print the details of the infra created in the screen as soon as Terraform apply is complete, or we can just use -o flag and get the 
