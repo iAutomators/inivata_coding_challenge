@@ -1,5 +1,4 @@
 ## Inivata interview Coding challenge "An Ansible Playbook"
-## Created by candidate: Mayank Sekhar {mayankshekharsingh@gmail.com}
 
 # This is for Dynamic Inventory, as per coding challenge i have been given the Name tag of the Ec2, i am creating this Dynamic inventory to fetch the Metadata of "my_instance_dev"
 # so that i can pass this Dynamic Inventory and all the tasks of my Playbook gets Executed
