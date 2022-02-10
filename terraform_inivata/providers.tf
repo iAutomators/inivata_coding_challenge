@@ -1,4 +1,4 @@
-## Inivata interview Coding challenge "Terraform Module"
+## Coding challenge "Terraform Module"
 ## Created by candidate: Mayank Sekhar {mayankshekharsingh@gmail.com}
 
 ## This File defines the details of the Provider used for Our deployment
